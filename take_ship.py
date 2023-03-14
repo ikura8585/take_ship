@@ -6,7 +6,7 @@ import openpyxl
 def fukusuu_replace(lines):
     wawawa_dict = {
         '関光汽船': '関光',
-        '産業運輸': '産業',
+        '産業運輸': '関光',
         'nan': '',
         '小倉運送': '小倉',
         '曜日': '',
