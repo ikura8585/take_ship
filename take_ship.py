@@ -16,7 +16,7 @@ def fukusuu_replace(lines):
     for key, value in wawawa_dict.items():
         lines = lines.replace(key, value)
         
-    return line
+    return lines
 
 st.title("乗船")
 
@@ -29,7 +29,7 @@ if uploaded_file is not None:
     # 九州向け
     df2_SHEET1 = []
     # if df_SHEET1.iat[11, 28] == "新門司港":
-    df_SHEET1 = pd.read_excel(r"C:\Users\ikrua\Desktop\20230307フェリー手配160337.xlsx",sheet_name=sheets[0],header=None)
+    df_SHEET1 = pd.read_excel(uploaded_file,sheet_name=sheets[0],header=None)
     
     n = 0
     for i in df_SHEET1.iloc[:,0]:
@@ -45,7 +45,7 @@ if uploaded_file is not None:
 
     n = 0
     if len(sheets) == 2:
-        df_SHEET2 = pd.read_excel(r"C:\Users\ikrua\Desktop\20230307フェリー手配160337.xlsx",sheet_name=sheets[1],header=None)
+        df_SHEET2 = pd.read_excel(uploaded_file,sheet_name=sheets[1],header=None)
         
         for i in df_SHEET2.iloc[:,0]:
             if type(i) == int:
