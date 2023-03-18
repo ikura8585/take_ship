@@ -60,9 +60,9 @@ if uploaded_file is not None:
             df2_SHEET2[i] = fukusuu_replace(df2_SHEET2[i])
 
     if df2_SHEET2:
-        date_number = (fukusuu_replace(df_SHEET1.iat[10,3][5:]) + "乗船" + str(len(df2_SHEET1)+len(df2_SHEET2))+ "本")
+        date_number = (df_SHEET1.iat[10,3][5:].replace('曜日','').replace('月','/',1).replace('日','',1)+ " 乗船" + str(len(df2_SHEET1)+len(df2_SHEET2))+ "本")
     else:
-        date_number = (fukusuu_replace(df_SHEET1.iat[10,3][5:]) + "乗船" + str(len(df2_SHEET1))+ "本")
+        date_number = (df_SHEET1.iat[10,3][5:].replace('曜日','').replace('月','/',1).replace('日','',1)+ " 乗船" + str(len(df2_SHEET1))+ "本")
     st.text(date_number)
     if df_SHEET1.iat[11, 28] == "徳島港":
         st.text('徳島向け')
