@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import openpyxl
-import pyperclip
 
 # 取引名の置換
 def fukusuu_replace(lines):
@@ -71,33 +70,12 @@ if uploaded_file is not None:
         date_number = (df_SHEET1.iat[date_ind,date_col][5:].replace('曜日','').replace('月','/',1).replace('日','',1)+ " 乗船" + str(len(df2_SHEET1)+len(df2_SHEET2))+ "本")
     else:
         date_number = (df_SHEET1.iat[date_ind,date_col][5:].replace('曜日','').replace('月','/',1).replace('日','',1)+ " 乗船" + str(len(df2_SHEET1))+ "本")
-    
     st.text(date_number)
-    df3 = []
-    df3.append(date_number)
     if df_SHEET1.iat[11, 28] == "徳島港":
         st.text('徳島向け')
-        df3.append('徳島向け')
     for i in df2_SHEET1:
         st.text(i)
-    for df2_SHEET1_ in df2_SHEET1:
-        df3.append(df2_SHEET1_)
     if df2_SHEET2:
         st.text('徳島向け')
-        df3.append('徳島向け')
         for i in df2_SHEET2:
             st.text(i)
-        for df2_SHEET2_ in df2_SHEET2:
-            df3.append(df2_SHEET2_)
-    
-    df4 = []
-    for df3_ in df3:
-        if df3_[0] == ' ':
-            df4.append(df3_.lstrip())
-        else:
-            df4.append(df3_)
-    copy_text = "\n".join(map(str,df4))
-
-    if st.button(label='copy'):
-        pyperclip.copy(copy_text)
-        st.write('コピーしました')
